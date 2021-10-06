@@ -29,7 +29,7 @@ public class Blackjack {
 		while(playerMoney > 0) {
 			//Play On!
 			//Take Bets
-			System.out.println("Saldosi on: €" + playerMoney + " , Aseta panos");
+			System.out.println(("\n") + "Saldosi on: €" + playerMoney + "\n" + "Aseta panos: ");
 			double playerBet = userInput.nextDouble();
 			if(playerBet > playerMoney) {
 				System.out.println("Et voi panostaa yli varojesi. Aloitetaan alusta.");
@@ -49,8 +49,8 @@ public class Blackjack {
 			
 			while(true) {
 				System.out.println("Sinun kätesi:");
-				System.out.print(playerDeck.toString());
-				System.out.println(", Korttiesi summa: " + playerDeck.cardsValue());
+				System.out.print(playerDeck.toString() + ("\n"));
+				System.out.println("Korttiesi summa: " + playerDeck.cardsValue());
 				
 				//Display Dealers Hand
 				System.out.println("Jakajan käsi: " + dealerDeck.getCard(0).toString() + " ja [Hidden]");
@@ -78,10 +78,10 @@ public class Blackjack {
 			}
 			
 			//Reveal dealer
-			System.out.println("Jakajan käsi: " + dealerDeck.toString());
+			System.out.println(("\n") + "Jakajan käsi: " + dealerDeck.toString());
 			//See If dealer wins.
 			if ((dealerDeck.cardsValue()>=17) &&  (dealerDeck.cardsValue()>playerDeck.cardsValue())&& endRound==false) {
-				System.out.println("Jakaja voittaa!");
+				System.out.println(">>>Jakaja voittaa!<<<");
 				playerMoney -= playerBet;
 				endRound = true;
 			}
@@ -94,24 +94,24 @@ public class Blackjack {
 			System.out.println("Jakajan korttien summa: " + dealerDeck.cardsValue());
 			//Dealer Bust??
 			if((dealerDeck.cardsValue() > 21)&& endRound == false) {
-				System.out.println("Jakajan käsi meni yli. Voitit!");
+				System.out.println("Jakajan käsi meni yli." + ("\n") + ">>>Voitit!<<<");
 				playerMoney += playerBet;
 				endRound = true;
 			}
 			
 			//Determine push??
 			if((playerDeck.cardsValue() == dealerDeck.cardsValue()) && endRound == false) {
-				System.out.println("Tasapeli");
+				System.out.println(">>>Tasapeli<<<");
 				endRound = true;
 			}
 			
 			if((playerDeck.cardsValue() > dealerDeck.cardsValue()) && endRound == false) {
-				System.out.println("Voitit käden!");
+				System.out.println(">>>Voitit käden!<<<");
 				playerMoney += playerBet;
 				endRound = true;
 			}
 			else if(endRound == false) {
-				System.out.println("Hävisit käden.");
+				System.out.println(">>>Hävisit käden.<<<");
 				playerMoney -= playerBet;
 				endRound = true;
 			}
@@ -122,8 +122,7 @@ public class Blackjack {
 			
 		}
 		
-		System.out.println("Ei katetta! :(");
+		System.out.println(("\n") + ("\n") + "-----Ei katetta, peli ohi-----");
 		
 	}
-
 }
